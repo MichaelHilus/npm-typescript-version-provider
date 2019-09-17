@@ -1,0 +1,20 @@
+{
+    "name": "@progresso/npm-typescript-version-provider",
+    "description": "Injects the version from packages.json as a property into a typescript class.",
+    "version": "1.0.0",
+    "main": "index.js",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/progresso-group/npm-typescript-version-provider.git"
+    },
+    "keywords": ["npm", "typescript", "version"],
+    "author": "Michael Hilus <m.hilus@progresso-group.de> (https://www.progresso-group.de)",
+    "license": "GPL-3.0",
+    "private": false,
+    "homepage": "https://github.com/progresso-group/npm-typescript-version-provider",
+    "bin": {
+      "npm-typescript-version-provider": "./bin/provider"
+    },
+    "dependencies": {
+    }
+  }
