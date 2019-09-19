@@ -1,7 +1,12 @@
 import { join } from 'path';
 
-export function createAbsolutePath(relativePath: string): string {
-    const basePath = process.cwd();
+export class PathCreator {
+    private basePath: string;
+    constructor() {
+        this.basePath = process.cwd();
+    }
 
-    return join(basePath, relativePath);
+    getAbsolutePath(relativePath: string): string {
+        return join(this.basePath, relativePath);
+    }
 }
