@@ -17,9 +17,9 @@ export class ArgsHandler {
             isValid: true
         }
 
-        if (this._args.length < 1) {
+        if (this._args.length < 2) {
             result.isValid = false;
-            result.errorMessage = 'Error: too few arguments. Specify target injection class.\nExample: npm-typescript-version-provider /src/services/app-info.ts';
+            result.errorMessage = 'Error: too few arguments. Specify target injection class and whether the version should be incremented.\nExample: npm-typescript-version-provider /src/services/app-info.ts increment';
         }
 
         return result;

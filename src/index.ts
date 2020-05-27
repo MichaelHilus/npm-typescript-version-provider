@@ -4,6 +4,8 @@ import { PathCreator } from './pathCreator';
 import { ArgsHandler } from './argsHandler';
 import { VersionLoader } from './versionLoader';
 import { VersionInjector } from './versionInjector';
+import { VersionSaver } from './versionSaver';
+import { VersionIncrementor } from './versionIncrementor';
 
 function provide() {
     const argsHandler = new ArgsHandler(process.argv);
@@ -14,6 +16,7 @@ function provide() {
     }
 
     const classPath = new PathCreator().getAbsolutePath(argsHandler.args[0]);
+    const shouldIncrement = argsHandler.args[1] === 'increment';
 
     if (!fs.existsSync(classPath)) {
         console.log(`Error: file ${classPath} was not found. Please create a typescript class first.`);
@@ -22,8 +25,12 @@ function provide() {
 
     const version = new VersionLoader().version;
 
-    const versionInjector = new VersionInjector(version, classPath);
+    const versionInjector = new VersionInjector(version, classPath, shouldIncrement);
     versionInjector.inject();
+
+    if (shouldIncrement) {
+        new VersionSaver(new VersionIncrementor(version).increment()).save();
+    }
 }
 
 provide();

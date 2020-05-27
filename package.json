@@ -1,7 +1,7 @@
 {
   "name": "@progresso/npm-typescript-version-provider",
   "description": "Injects the version from packages.json as a property into a typescript class.",
-  "version": "1.0.0",
+  "version": "1.1.3",
   "main": "index.js",
   "repository": {
     "type": "git",

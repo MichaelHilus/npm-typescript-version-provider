@@ -1,11 +1,13 @@
 import * as fs from 'fs';
+import { VersionIncrementor } from './versionIncrementor';
 
 export class VersionInjector {
-    constructor( private _version: string, private _classPath: string) {
+    constructor( private _version: string, private _classPath: string, private _shouldIncrement: boolean) {
     }
 
     private get _line() {
-        return `\n  public get version(): string { return '${this._version}'; }`;
+        const version = this._shouldIncrement ? new VersionIncrementor(this._version).increment() : this._version;
+        return `\n  public get version(): string { return '${version}'; }`;
     }
 
     public inject(): void {
